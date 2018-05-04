@@ -26,9 +26,6 @@ import numpy as np
 from torch.utils.data import Dataset
 import random
 
-from kor_char_parser import decompose_str_as_one_hot
-
-
 import re
 
 

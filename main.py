@@ -178,7 +178,7 @@ class WeightDrop(torch.nn.Module):
 
 class Movie(nn.Module):
     def __init__(self, n_char, n_embed, n_hidden, dropout,
-                dropout_in=0.1 attention=True):
+                dropout_in=0.1, attention=True):
         super().__init__()
 
         self.lockdrop = LockedDropout()
@@ -195,7 +195,7 @@ class Movie(nn.Module):
                             batch_first=True, bidirectional=True)
         self.encoder = WeightDrop(encoder,
                     ['weight_hh_l0', 'weight_hh_l0_reverse'], dropout=dropout)
-        
+
         encoder2 = nn.LSTM(n_hidden * 2, n_hidden,
                             batch_first=True, bidirectional=True)
         self.encoder2 = WeightDrop(encoder2,
